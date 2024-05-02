@@ -1,15 +1,10 @@
-# Huffman-Compression
+# Huffman Compression [Compress And Uncompress Any File]
 
 <img height="400" src="https://static.javatpoint.com/python/images/huffman-coding-using-python.png">
 
 ## Overview
 
-This repository contains the code for a Python program that uses fake phone & billing data for customers to plot them on the map. It also allows you to filter and access their individual data.
-
-## Features
-
-- **Data Visualization**: Plots customer data on a map using their phone & billing information.
-- **Data Filtering**: Allows you to filter and access individual customer data.
+This repository contains the code for a Python program that uses the Huffman Compression Algorithm to compress and uncompress any file using the console.
 
 ## Technologies Used
 
