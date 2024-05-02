@@ -1,5 +1,7 @@
 # Customer Data Visualization
 
+<img height="400" src="https://static.javatpoint.com/python/images/huffman-coding-using-python.png">
+
 ## Overview
 
 This repository contains the code for a Python program that uses fake phone & billing data for customers to plot them on the map. It also allows you to filter and access their individual data.
