@@ -1,4 +1,4 @@
-# Customer Data Visualization
+# Huffman-Compression
 
 <img height="400" src="https://static.javatpoint.com/python/images/huffman-coding-using-python.png">
 
