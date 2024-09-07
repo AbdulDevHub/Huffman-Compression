@@ -1,4 +1,4 @@
-# Huffman Compression [Compress And Uncompress Any File]
+# Huffman Compression [Compress & Uncompress Any File]
 
 <img height="400" src="https://static.javatpoint.com/python/images/huffman-coding-using-python.png">
 
