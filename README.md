@@ -6,10 +6,6 @@
 
 This repository contains the code for a Python program that uses the Huffman Compression Algorithm to compress and uncompress any file using the console.
 
-## Technologies Used
-
-- Python
-
 ## Setup
 
 To run this program locally, follow these steps:
