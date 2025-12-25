@@ -1,19 +1,19 @@
 """
-Profiler
+Profiler for Huffman Compression
 
 Instructions:
 Place this document in the same directory as your compress.py file
 Run as you would any Python file (this uses default settings):
-    python3.7 profile.py
+    python profile.py
 For help and usage:
-    python3.7 profile.py -h
+    python profile.py -h
 
 There are two optional command-line arguments:
     -f, --file : to specify the path of the file you'd like to compress
     -n, --number : the number of iterations of compress/decompress
 
 For example, to run with only 1 iteration:
-    python3 profile.py -n 1
+    python profile.py -n 1
 """
 
 import argparse
@@ -25,13 +25,19 @@ from compress import compress_file, decompress_file
 
 
 def wrapper(f, *args):
+    """Wrapper function for timeit compatibility."""
     def wrapped():
         return f(*args)
-
     return wrapped
 
 
 def profile(infile, number):
+    """Profile compression and decompression performance.
+    
+    Args:
+        infile: Path to the input file to compress
+        number: Number of iterations to run
+    """
     compressed = infile + ".huf"
     decompressed = compressed + ".orig"
 
@@ -44,6 +50,7 @@ def profile(infile, number):
                 infile
             )
         )
+        return
 
     print("======= Start Profile =======")
 
@@ -51,6 +58,7 @@ def profile(infile, number):
     print("Iterations: {}\n".format(number))
 
     print("Running Compression...")
+    # Suppress "Bits per symbol" output from compress_file
     sys.stdout = open(os.devnull, "w")
     total_compress = timeit(compress_run_param, number=number)
     sys.stdout = sys.__stdout__
@@ -60,8 +68,9 @@ def profile(infile, number):
     total_decompress = timeit(decompress_run_param, number=number)
     print("Done Decompression.\n")
 
+    # Verify that decompression worked correctly
     if cmp(infile, decompressed):
-        print("Success")
+        print("Success! Files match.\n")
         print("---- Stats ----")
         insize = os.path.getsize(infile)
         outsize = os.path.getsize(compressed)
@@ -78,10 +87,19 @@ def profile(infile, number):
 
     print("=" * 29)
 
+    # Clean up generated files
+    try:
+        if os.path.exists(compressed):
+            os.remove(compressed)
+        if os.path.exists(decompressed):
+            os.remove(decompressed)
+    except Exception as e:
+        print("Warning: Could not clean up temporary files: {}".format(e))
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Profiler for A2 Huffman Encoding",
+        description="Profiler for CSC148 A2 Huffman Encoding",
         epilog="Must be placed in same directory as compress.py",
     )
 
